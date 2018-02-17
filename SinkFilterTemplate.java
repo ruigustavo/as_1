@@ -16,7 +16,7 @@
 * responsible for writing the data to a file, or device of some kind. This template assumes that the filter is a sink
 * filter that reads data from the input file and writes the output from this filter to a file or device of some kind.
 * In this case, only the input port is used by the filter. In cases where the filter is a standard filter or a source
-* filter, you should use the FilterTemplate.java or the SourceFilterTemplate.java as a starting point for creating
+* filter, you should use the FarToCelsFilter.java or the SourceFilterTemplate.java as a starting point for creating
 * standard or source filters.
 *
 * Parameters: 		None
@@ -31,7 +31,22 @@ public class SinkFilterTemplate extends FilterFramework
 {
 	public void run()
     {
-		byte databyte = 0;
+		int MeasurementLength = 8;		// This is the length of all measurements (including time) in bytes
+		int IdLength = 4;				// This is the length of IDs in the byte stream
+
+		byte databyte = 0;				// This is the data byte read from the stream
+		int bytesread = 0;				// This is the number of bytes read from the stream
+		int byteswritten = 0;				// Number of bytes written to the stream.
+
+		long measurement;				// This is the word used to store all measurements - conversions are illustrated.
+		int id;							// This is the measurement id
+		int i;							// This is a loop counter
+
+		/*************************************************************
+		 *	First we announce to the world that we are alive...
+		 **************************************************************/
+
+		System.out.print( "\n" + this.getName() + "::Sink Reading ");
 
 /*************************************************************
 *	This is the main processing loop for the filter. Since this
@@ -43,21 +58,52 @@ public class SinkFilterTemplate extends FilterFramework
 		{
 			try
 			{
-/*************************************************************
-*	Here we read a byte from the input port. Note that
-* 	regardless how the data is written, data must be read one
-*	byte at a time from the input pipe. This has been done
-* 	to adhere to the pipe and filter paradigm and provide a
-*	high degree of portabilty between filters. However, you
-* 	must convert output data as needed on your own.
-**************************************************************/
+				id = 0;
 
-				databyte = ReadFilterInputPort();
+				for (i=0; i<IdLength; i++ )
+				{
+					databyte = ReadFilterInputPort();	// This is where we read the byte from the stream...
 
-/*************************************************************
-*	The programer can insert code for the filter operations
-* 	here to include writing the data to some device or file.
-**************************************************************/
+					id = id | (databyte & 0xFF);		// We append the byte on to ID...
+
+					if (i != IdLength-1)				// If this is not the last byte, then slide the
+					{									// previously appended byte to the left by one byte
+						id = id << 8;					// to make room for the next byte we append to the ID
+
+					} // if
+
+					bytesread++;						// Increment the byte count
+
+				} // for
+
+				measurement = 0;
+
+				for (i=0; i<MeasurementLength; i++ )
+				{
+					databyte = ReadFilterInputPort();
+					measurement = measurement | (databyte & 0xFF);	// We append the byte on to measurement...
+
+					if (i != MeasurementLength-1)					// If this is not the last byte, then slide the
+					{												// previously appended byte to the left by one byte
+						measurement = measurement << 8;				// to make room for the next byte we append to the
+						// measurement
+					} // if
+
+					bytesread++;									// Increment the byte count
+
+				} // if
+				if ( id == 2 )
+				{
+					System.out.print(" ID = " + id + " Alti " + Double.longBitsToDouble(measurement) );
+
+				} // if
+				else if ( id == 4 )
+				{
+					System.out.print(" ID = " + id + " Temp " + Double.longBitsToDouble(measurement) );
+
+				} // if
+
+				System.out.print( "\n" );
 
 			} // try
 
@@ -70,6 +116,8 @@ public class SinkFilterTemplate extends FilterFramework
 			catch (EndOfStreamException e)
 			{
 				ClosePorts();
+				System.out.println( "\n" + this.getName() + "::Read file complete, bytes read::" + bytesread + " bytes written: " + byteswritten );
+
 				break;
 
 			} // catch
@@ -78,4 +126,4 @@ public class SinkFilterTemplate extends FilterFramework
 
    } // run
 
-} // FilterTemplate
+} // FarToCelsFilter
