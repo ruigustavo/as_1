@@ -106,7 +106,7 @@ public class FarToCelsFilter extends FilterFramework
 
                     } // for
                     double aux = (Double.longBitsToDouble(measurement));
-                    System.out.println("temp faren:"+aux);
+                   // System.out.println("temp faren:"+aux);
 
                     aux = ((aux - 32L)*5L)/9L;
                     //System.out.println("tem cels:"+aux);

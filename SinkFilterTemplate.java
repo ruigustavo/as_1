@@ -1,3 +1,10 @@
+import java.io.DataOutputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 /******************************************************************************************************************
 * File:SinkFilterTemplate.java
 * Course: 17655
@@ -31,22 +38,36 @@ public class SinkFilterTemplate extends FilterFramework
 {
 	public void run()
     {
+		String fileName = "NewOutput.dat"; // new output
+		DataOutputStream file = null;
+		Calendar TimeStamp = Calendar.getInstance();
+		SimpleDateFormat TimeStampFormat = new SimpleDateFormat("yyyy:dd:hh:mm:ss");
+
 		int MeasurementLength = 8;		// This is the length of all measurements (including time) in bytes
 		int IdLength = 4;				// This is the length of IDs in the byte stream
 
 		byte databyte = 0;				// This is the data byte read from the stream
 		int bytesread = 0;				// This is the number of bytes read from the stream
 		int byteswritten = 0;				// Number of bytes written to the stream.
-
+		String time = null;
+		String altitude = null;
+		String temp = null;
 		long measurement;				// This is the word used to store all measurements - conversions are illustrated.
 		int id;							// This is the measurement id
 		int i;							// This is a loop counter
 
+		boolean checkpoint = false;
+		try {
+			file = new DataOutputStream(new FileOutputStream(fileName));
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 		/*************************************************************
 		 *	First we announce to the world that we are alive...
 		 **************************************************************/
 
-		System.out.print( "\n" + this.getName() + "::Sink Reading ");
+		System.out.println( "\n" + this.getName() + "::Sink Reading ");
 
 /*************************************************************
 *	This is the main processing loop for the filter. Since this
@@ -92,18 +113,36 @@ public class SinkFilterTemplate extends FilterFramework
 					bytesread++;									// Increment the byte count
 
 				} // if
-				if ( id == 2 )
+
+				if ( id == 0 )
 				{
-					System.out.print(" ID = " + id + " Alti " + Double.longBitsToDouble(measurement) );
+					TimeStamp.setTimeInMillis(measurement);
+					time = TimeStampFormat.format(TimeStamp.getTime());
+					System.out.print("Time:" + TimeStampFormat.format(TimeStamp.getTime() ));
+				} // if
+				else if ( id == 2 )
+				{
+					altitude = String.format("%.5f", Double.longBitsToDouble(measurement));
+					System.out.print("\tAlti:" + String.format("%.5f", Double.longBitsToDouble(measurement)) );
 
 				} // if
 				else if ( id == 4 )
 				{
-					System.out.print(" ID = " + id + " Temp " + Double.longBitsToDouble(measurement) );
+					temp = String.format("%.4f", Double.longBitsToDouble(measurement));
+					System.out.print("\tTemp:" + String.format("%.4f", Double.longBitsToDouble(measurement)) );
+					System.out.print( "\n" );
+
+					checkpoint = true;
 
 				} // if
+				if(checkpoint){
+					file.writeChars(time+"\t");
+					file.writeChars(temp+"\t");
+					file.writeChars(altitude+"\n");
+					checkpoint = false;
+				}
 
-				System.out.print( "\n" );
+
 
 			} // try
 
@@ -121,6 +160,9 @@ public class SinkFilterTemplate extends FilterFramework
 				break;
 
 			} // catch
+			catch (IOException e) {
+				e.printStackTrace();
+			}
 
 		} // while
 

@@ -106,7 +106,7 @@ public class FeetToMeterFilter extends FilterFramework
 
                     } // for
                     double aux = (Double.longBitsToDouble(measurement));
-                    System.out.println("feet:"+aux);
+                    //System.out.println("feet:"+aux);
                     aux = aux/3.2808;
                     output = convertToByteArray(aux);
                     for (i=0; i<MeasurementLength; i++ ){
