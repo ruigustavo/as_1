@@ -1,5 +1,5 @@
 /******************************************************************************************************************
-* File:PlumberTemplate.java
+* File:Plumber.java
 * Course: 17655
 * Project: Assignment 1
 * Copyright: Copyright (c) 2003 Carnegie Mellon University
@@ -37,7 +37,7 @@
 * Internal Methods:	None
 *
 ******************************************************************************************************************/
-public class PlumberTemplate
+public class Plumber
 {
    public static void main( String argv[])
    {
@@ -46,10 +46,10 @@ public class PlumberTemplate
 		****************************************************************************/
 
 
-	   SourceFilterTemplate Filter1 = new SourceFilterTemplate();	// This is a source filter - see SourceFilterTemplate.java
+	   SourceFilter Filter1 = new SourceFilter();	// This is a source filter - see SourceFilter.java
 	   FarToCelsFilter Filter2 = new FarToCelsFilter();	// This is a standard filter - see FarToCelsFilter.java
 	   FeetToMeterFilter Filter3 = new FeetToMeterFilter();		// This is a sink filter - see FeetToMeterFilter.java
-	   SinkFilterTemplate Filter4 = new SinkFilterTemplate();		// This is a sink filter - see SinkFilterTemplate.java
+	   SinkFilter Filter4 = new SinkFilter();		// This is a sink filter - see SinkFilter.java
 
 
 		/****************************************************************************
@@ -77,4 +77,4 @@ public class PlumberTemplate
 
    } // main
 
-} // PlumberTemplate
+} // Plumber

@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 /******************************************************************************************************************
-* File:SinkFilterTemplate.java
+* File:SinkFilter.java
 * Course: 17655
 * Project: Assignment 1
 * Copyright: Copyright (c) 2003 Carnegie Mellon University
@@ -23,7 +23,7 @@ import java.util.Calendar;
 * responsible for writing the data to a file, or device of some kind. This template assumes that the filter is a sink
 * filter that reads data from the input file and writes the output from this filter to a file or device of some kind.
 * In this case, only the input port is used by the filter. In cases where the filter is a standard filter or a source
-* filter, you should use the FarToCelsFilter.java or the SourceFilterTemplate.java as a starting point for creating
+* filter, you should use the FarToCelsFilter.java or the SourceFilter.java as a starting point for creating
 * standard or source filters.
 *
 * Parameters: 		None
@@ -34,7 +34,7 @@ import java.util.Calendar;
 *
 ******************************************************************************************************************/
 
-public class SinkFilterTemplate extends FilterFramework
+public class SinkFilter extends FilterFramework
 {
 	public void run()
     {

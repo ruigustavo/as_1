@@ -4,7 +4,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 /******************************************************************************************************************
-* File:SourceFilterTemplate.java
+* File:SourceFilter.java
 * Course: 17655
 * Project: Assignment 1
 * Copyright: Copyright (c) 2003 Carnegie Mellon University
@@ -20,7 +20,7 @@ import java.io.IOException;
 * read-write loop for reading data from some source and writing to the output port of the filter. This template
 * assumes that the filter is a source filter that reads data from a file, device (sensor),or generates the data
 * interally, and then writes data to its output port. In this case, only the output port is used. In cases where the
-* filter is a standard filter or a sink filter, you should use the FarToCelsFilter.java or SinkFilterTemplate.java as
+* filter is a standard filter or a sink filter, you should use the FarToCelsFilter.java or SinkFilter.java as
 * a starting point for creating standard or sink filters.
 *
 * Parameters: 		None
@@ -31,7 +31,7 @@ import java.io.IOException;
 *
 ******************************************************************************************************************/
 
-public class SourceFilterTemplate extends FilterFramework
+public class SourceFilter extends FilterFramework
 {
 	public void run()
 	{
@@ -105,4 +105,4 @@ public class SourceFilterTemplate extends FilterFramework
 
 	} // run
 
-} // SourceFilterTemplate
+} // SourceFilter

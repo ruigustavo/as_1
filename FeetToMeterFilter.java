@@ -18,7 +18,7 @@ import java.nio.ByteBuffer;
  * output port of the filter. This template assumes that the filter is a "normal" that it both reads and writes data.
  * That is both the input and output ports are used - its input port is connected to a pipe from an up-stream filter and
  * its output port is connected to a pipe to a down-stream filter. In cases where the filter is a source or sink, you
- * should use the SourceFilterTemplate.java or SinkFilterTemplate.java as a starting point for creating source or sink
+ * should use the SourceFilter.java or SinkFilter.java as a starting point for creating source or sink
  * filters.
  *
  * Parameters: 		None
