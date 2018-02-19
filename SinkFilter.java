@@ -137,8 +137,8 @@ public class SinkFilter extends FilterFramework
 				} // if
 				if(checkpoint){
 					file.writeChars(time+"\t");
+                    file.writeChars(altitude+"\n");
                     file.writeChars(temp+"\t");
-					file.writeChars(altitude+"\n");
 					checkpoint = false;
 				}
 

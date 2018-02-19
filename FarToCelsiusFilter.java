@@ -99,7 +99,7 @@ public class FarToCelsiusFilter extends FilterFramework
                         if (i != MeasurementLength-1)					// If this is not the last byte, then slide the
                         {												// previously appended byte to the left by one byte
                             measurement = measurement << 8;				// to make room for the next byte we append to the
-                            // measurement
+
                         } // if
 
                         bytesread++;

@@ -66,8 +66,6 @@ public class FilterFramework extends Thread
 
 	class EndOfStreamException extends Exception {
 
-		EndOfStreamException () { super(); }
-
 		EndOfStreamException(String s) { super(s); }
 
 	} // class
