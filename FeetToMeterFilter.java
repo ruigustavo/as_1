@@ -1,7 +1,7 @@
 import java.nio.ByteBuffer;
 
 /******************************************************************************************************************
- * File:FarToCelsFilter.java
+ * File:FarToCelsiusFilter.java
  * Course: 17655
  * Project: Assignment 1
  * Copyright: Copyright (c) 2003 Carnegie Mellon University
@@ -145,4 +145,4 @@ public class FeetToMeterFilter extends FilterFramework
 
     } // run
 
-} // FarToCelsFilter
+} // FarToCelsiusFilter

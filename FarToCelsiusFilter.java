@@ -1,7 +1,7 @@
 import java.nio.ByteBuffer;
 
 /******************************************************************************************************************
-* File:FarToCelsFilter.java
+* File:FarToCelsiusFilter.java
 * Course: 17655
 * Project: Assignment 1
 * Copyright: Copyright (c) 2003 Carnegie Mellon University
@@ -29,7 +29,7 @@ import java.nio.ByteBuffer;
 *
 ******************************************************************************************************************/
 
-public class FarToCelsFilter extends FilterFramework
+public class FarToCelsiusFilter extends FilterFramework
 {
     public static byte[] convertToByteArray(double value) {
         byte[] bytes = new byte[8];
@@ -148,4 +148,4 @@ public class FarToCelsFilter extends FilterFramework
 
    } // run
 
-} // FarToCelsFilter
+} // FarToCelsiusFilter

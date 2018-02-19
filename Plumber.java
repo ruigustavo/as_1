@@ -47,7 +47,7 @@ public class Plumber
 
 
 	   SourceFilter Filter1 = new SourceFilter();	        // This is a source filter - see SourceFilter.java
-	   FarToCelsFilter Filter2 = new FarToCelsFilter();	    // This is a standard filter - see FarToCelsFilter.java
+	   FarToCelsiusFilter Filter2 = new FarToCelsiusFilter();	    // This is a standard filter - see FarToCelsiusFilter.java
 	   FeetToMeterFilter Filter3 = new FeetToMeterFilter();	// This is a sink filter - see FeetToMeterFilter.java
 	   SinkFilter Filter4 = new SinkFilter();		        // This is a sink filter - see SinkFilter.java
 

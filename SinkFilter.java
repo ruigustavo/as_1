@@ -23,7 +23,7 @@ import java.util.Calendar;
 * responsible for writing the data to a file, or device of some kind. This template assumes that the filter is a sink
 * filter that reads data from the input file and writes the output from this filter to a file or device of some kind.
 * In this case, only the input port is used by the filter. In cases where the filter is a standard filter or a source
-* filter, you should use the FarToCelsFilter.java or the SourceFilter.java as a starting point for creating
+* filter, you should use the FarToCelsiusFilter.java or the SourceFilter.java as a starting point for creating
 * standard or source filters.
 *
 * Parameters: 		None
@@ -123,13 +123,13 @@ public class SinkFilter extends FilterFramework
 				else if ( id == 2 )
 				{
 					altitude = String.format("%.5f", Double.longBitsToDouble(measurement));
-					System.out.print("\tAlti:" + String.format("%.5f", Double.longBitsToDouble(measurement)) + " meters" );
+					System.out.print("\tAltitude (m): " + String.format("%.5f", Double.longBitsToDouble(measurement)));
 
 				} // if
 				else if ( id == 4 )
 				{
 					temp = String.format("%.4f", Double.longBitsToDouble(measurement));
-					System.out.print("\tTemp:" + String.format("%.4f", Double.longBitsToDouble(measurement)) + "°C" );
+					System.out.print("\tTemperature (°C): " + String.format("%.4f", Double.longBitsToDouble(measurement)));
 					System.out.print( "\n" );
 
 					checkpoint = true;
@@ -168,4 +168,4 @@ public class SinkFilter extends FilterFramework
 
    } // run
 
-} // FarToCelsFilter
+} // FarToCelsiusFilter

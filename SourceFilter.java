@@ -20,7 +20,7 @@ import java.io.IOException;
 * read-write loop for reading data from some source and writing to the output port of the filter. This template
 * assumes that the filter is a source filter that reads data from a file, device (sensor),or generates the data
 * interally, and then writes data to its output port. In this case, only the output port is used. In cases where the
-* filter is a standard filter or a sink filter, you should use the FarToCelsFilter.java or SinkFilter.java as
+* filter is a standard filter or a sink filter, you should use the FarToCelsiusFilter.java or SinkFilter.java as
 * a starting point for creating standard or sink filters.
 *
 * Parameters: 		None
