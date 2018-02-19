@@ -59,7 +59,7 @@ public class Plumber
 		* filter and working your way back to the source as shown here.
 		****************************************************************************/
 
-	   Filter4.Connect(Filter3); // This esstially says, "connect Filter4's input port to Filter3's output port
+	   	Filter4.Connect(Filter3); // This esstially says, "connect Filter4's input port to Filter3's output port
 		Filter3.Connect(Filter2); // This esstially says, "connect Filter3's input port to Filter2's output port
 		Filter2.Connect(Filter1); // This esstially says, "connect Filter2's intput port to Filter1's output port
 
@@ -72,7 +72,7 @@ public class Plumber
 		Filter1.start();
 		Filter2.start();
 		Filter3.start();
-	   Filter4.start();
+	   	Filter4.start();
 
 
    } // main
