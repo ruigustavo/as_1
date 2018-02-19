@@ -123,13 +123,13 @@ public class SinkFilter extends FilterFramework
 				else if ( id == 2 )
 				{
 					altitude = String.format("%.5f", Double.longBitsToDouble(measurement));
-					System.out.print("\tAlti:" + String.format("%.5f", Double.longBitsToDouble(measurement)) );
+					System.out.print("\tAlti:" + String.format("%.5f", Double.longBitsToDouble(measurement)) + " meters" );
 
 				} // if
 				else if ( id == 4 )
 				{
 					temp = String.format("%.4f", Double.longBitsToDouble(measurement));
-					System.out.print("\tTemp:" + String.format("%.4f", Double.longBitsToDouble(measurement)) );
+					System.out.print("\tTemp:" + String.format("%.4f", Double.longBitsToDouble(measurement)) + "°C" );
 					System.out.print( "\n" );
 
 					checkpoint = true;
@@ -137,7 +137,7 @@ public class SinkFilter extends FilterFramework
 				} // if
 				if(checkpoint){
 					file.writeChars(time+"\t");
-					file.writeChars(temp+"\t");
+                    file.writeChars(temp+"\t");
 					file.writeChars(altitude+"\n");
 					checkpoint = false;
 				}
