@@ -51,7 +51,7 @@ public class SinkFilter extends FilterFramework
 		int byteswritten = 0;				// Number of bytes written to the stream.
 		String time = null;
 		String altitude = null;
-		String temp = null;
+		String temperature = null;
 		long measurement;				// This is the word used to store all measurements - conversions are illustrated.
 		int id;							// This is the measurement id
 		int i;							// This is a loop counter
@@ -130,7 +130,7 @@ public class SinkFilter extends FilterFramework
 
 				else if ( id == 4 )
 				{
-					temp = String.format("%.2f", Double.longBitsToDouble(measurement));
+					temperature = String.format("%.2f", Double.longBitsToDouble(measurement));
 					System.out.print("\tTemperature (°C): " + String.format("%.2f", Double.longBitsToDouble(measurement)));
 					System.out.print( "\n" );
 
@@ -140,7 +140,7 @@ public class SinkFilter extends FilterFramework
 				if(checkpoint){
 					file.writeChars(time+"\t");
                     file.writeChars(altitude+"\n");
-                    file.writeChars(temp+"\t");
+                    file.writeChars(temperature+"\t");
 
 					checkpoint = false;
 				}
