@@ -118,19 +118,19 @@ public class SinkFilter extends FilterFramework
 				{
 					TimeStamp.setTimeInMillis(measurement);
 					time = TimeStampFormat.format(TimeStamp.getTime());
-					System.out.print("Time:" + TimeStampFormat.format(TimeStamp.getTime() ));
+					System.out.print("Time: " + TimeStampFormat.format(TimeStamp.getTime() ));
 				} // if
 
 				else if ( id == 2 )
 				{
-					altitude = String.format("%.2f", Double.longBitsToDouble(measurement));
+					temperature = String.format("%.2f", Double.longBitsToDouble(measurement));
 					System.out.print("\tAltitude (m): " + String.format("%.2f", Double.longBitsToDouble(measurement)));
 
 				} // if
 
 				else if ( id == 4 )
 				{
-					temperature = String.format("%.2f", Double.longBitsToDouble(measurement));
+					altitude = String.format("%.2f", Double.longBitsToDouble(measurement));
 					System.out.print("\tTemperature (°C): " + String.format("%.2f", Double.longBitsToDouble(measurement)));
 					System.out.print( "\n" );
 
@@ -139,8 +139,8 @@ public class SinkFilter extends FilterFramework
 				} // if
 				if(checkpoint){
 					file.writeChars(time+"\t");
-                    file.writeChars(altitude+"\n");
                     file.writeChars(temperature+"\t");
+                    file.writeChars(altitude+"\n");
 
 					checkpoint = false;
 				}

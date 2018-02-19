@@ -51,7 +51,6 @@ public class Plumber
 	   FeetToMeterFilter Filter3 = new FeetToMeterFilter();	// This is a sink filter - see FeetToMeterFilter.java
 	   SinkFilter Filter4 = new SinkFilter();		        // This is a sink filter - see SinkFilter.java
 
-
 		/****************************************************************************
 		* Here we connect the filters starting with the sink filter (Filter 1) which
 		* we connect to Filter2 the middle filter. Then we connect Filter2 to the
@@ -59,7 +58,7 @@ public class Plumber
 		* filter and working your way back to the source as shown here.
 		****************************************************************************/
 
-	   	Filter4.Connect(Filter3); // This esstially says, "connect Filter4's input port to Filter3's output port
+		Filter4.Connect(Filter3); // This esstially says, "connect Filter4's input port to Filter3's output port
 		Filter3.Connect(Filter2); // This esstially says, "connect Filter3's input port to Filter2's output port
 		Filter2.Connect(Filter1); // This esstially says, "connect Filter2's input port to Filter1's output port
 
