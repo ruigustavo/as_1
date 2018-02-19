@@ -38,7 +38,7 @@ public class SinkFilter extends FilterFramework
 {
 	public void run()
     {
-		String fileName = "NewOutput.dat"; // new output
+		String fileName = "OutputA.dat"; // new output
 		DataOutputStream file = null;
 		Calendar TimeStamp = Calendar.getInstance();
 		SimpleDateFormat TimeStampFormat = new SimpleDateFormat("yyyy:dd:hh:mm:ss");
@@ -120,16 +120,18 @@ public class SinkFilter extends FilterFramework
 					time = TimeStampFormat.format(TimeStamp.getTime());
 					System.out.print("Time:" + TimeStampFormat.format(TimeStamp.getTime() ));
 				} // if
+
 				else if ( id == 2 )
 				{
-					altitude = String.format("%.5f", Double.longBitsToDouble(measurement));
-					System.out.print("\tAltitude (m): " + String.format("%.5f", Double.longBitsToDouble(measurement)));
+					altitude = String.format("%.2f", Double.longBitsToDouble(measurement));
+					System.out.print("\tAltitude (m): " + String.format("%.2f", Double.longBitsToDouble(measurement)));
 
 				} // if
+
 				else if ( id == 4 )
 				{
-					temp = String.format("%.4f", Double.longBitsToDouble(measurement));
-					System.out.print("\tTemperature (°C): " + String.format("%.4f", Double.longBitsToDouble(measurement)));
+					temp = String.format("%.2f", Double.longBitsToDouble(measurement));
+					System.out.print("\tTemperature (°C): " + String.format("%.2f", Double.longBitsToDouble(measurement)));
 					System.out.print( "\n" );
 
 					checkpoint = true;
@@ -139,6 +141,7 @@ public class SinkFilter extends FilterFramework
 					file.writeChars(time+"\t");
                     file.writeChars(altitude+"\n");
                     file.writeChars(temp+"\t");
+
 					checkpoint = false;
 				}
 
